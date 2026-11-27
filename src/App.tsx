@@ -1,9 +1,27 @@
+import { Route, Routes } from 'react-router'
+import { Navbar } from './components/Navbar'
+import { RequireAuth } from './components/RequireAuth'
+import { LoginPage } from './pages/LoginPage'
+import { RegisterPage } from './pages/RegisterPage'
+import { WelcomePage } from './pages/WelcomePage'
+
 function App() {
   return (
-    <main className="page">
-      <h1>EasySpot</h1>
-      <p className="muted">Find and reserve a parking space before you arrive.</p>
-    </main>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route
+          path="*"
+          element={
+            <RequireAuth>
+              <WelcomePage />
+            </RequireAuth>
+          }
+        />
+      </Routes>
+    </>
   )
 }
 
