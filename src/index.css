@@ -276,3 +276,162 @@ button.small {
   width: 100%;
   max-width: 400px;
 }
+
+/* Find parking layout */
+.parking-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 800px) {
+  .parking-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lot-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-align: left;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem;
+  font-weight: 400;
+  box-shadow: var(--shadow);
+}
+
+.lot-card:hover:not(:disabled) {
+  background: #f8faff;
+  border-color: #c7d6fb;
+}
+
+.lot-card.selected {
+  border-color: var(--primary);
+  background: #f3f7ff;
+  outline: 1px solid var(--primary);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Space board */
+.legend {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-transform: capitalize;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+}
+
+.space-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 0.6rem;
+}
+
+.space-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.9rem 0.5rem;
+  border-radius: var(--radius);
+  border: 2px solid transparent;
+  color: #fff;
+  font-weight: 600;
+}
+
+.space-tile:disabled {
+  opacity: 1;
+  cursor: default;
+}
+
+.space-tile .space-code {
+  font-size: 1.1rem;
+}
+
+.space-tile .space-type {
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.space-tile.selected {
+  border-color: var(--text);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.35);
+}
+
+.space-available {
+  background: var(--available);
+}
+
+.space-tile.space-available:hover:not(:disabled) {
+  background: #15803d;
+}
+
+.space-reserved {
+  background: var(--reserved);
+}
+
+.space-occupied {
+  background: var(--occupied);
+}
+
+.space-maintenance {
+  background: var(--maintenance);
+}
+
+/* Status badges */
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-available,
+.badge-completed {
+  background: #e3f6ea;
+  color: #166534;
+}
+
+.badge-reserved,
+.badge-active {
+  background: #fdf1dc;
+  color: #92400e;
+}
+
+.badge-occupied,
+.badge-checked_in {
+  background: #fde4e4;
+  color: #991b1b;
+}
+
+.badge-maintenance,
+.badge-cancelled {
+  background: #eceef2;
+  color: #4b5563;
+}
