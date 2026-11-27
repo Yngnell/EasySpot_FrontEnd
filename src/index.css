@@ -487,3 +487,9 @@ tbody tr:last-child td {
   border-top: 1px solid var(--border);
   padding-top: 1rem;
 }
+
+/* Attendant space status panel */
+.status-panel {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}

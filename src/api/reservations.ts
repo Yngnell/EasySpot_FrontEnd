@@ -18,4 +18,15 @@ export const reservationsApi = {
   // PATCH /reservations/:id/cancel -> the space becomes "available" again
   cancel: (id: number) =>
     apiRequest<Reservation>(`/reservations/${id}/cancel`, { method: 'PATCH' }),
+
+  // GET /reservations (attendant, admin) -> every driver's reservations
+  list: () => apiRequest<Reservation[]>('/reservations'),
+
+  // PATCH /reservations/:id/check-in (attendant, admin) -> space "occupied"
+  checkIn: (id: number) =>
+    apiRequest<Reservation>(`/reservations/${id}/check-in`, { method: 'PATCH' }),
+
+  // PATCH /reservations/:id/complete (attendant, admin) -> fee computed, space "available"
+  complete: (id: number) =>
+    apiRequest<Reservation>(`/reservations/${id}/complete`, { method: 'PATCH' }),
 }

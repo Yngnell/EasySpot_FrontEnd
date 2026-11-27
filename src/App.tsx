@@ -1,11 +1,19 @@
-import { Route, Routes } from 'react-router'
+import { Navigate, Route, Routes } from 'react-router'
+import { homePathFor, useAuth } from './auth/auth-context'
 import { Navbar } from './components/Navbar'
 import { RequireAuth } from './components/RequireAuth'
 import { FindParkingPage } from './pages/FindParkingPage'
 import { LoginPage } from './pages/LoginPage'
 import { MyReservationsPage } from './pages/MyReservationsPage'
+import { ParkingDeskPage } from './pages/ParkingDeskPage'
 import { RegisterPage } from './pages/RegisterPage'
-import { WelcomePage } from './pages/WelcomePage'
+
+/** Sends each user to their own start page (or to login). */
+function HomeRedirect() {
+  const { user, loading } = useAuth()
+  if (loading) return <p className="page muted">Loading…</p>
+  return <Navigate to={user ? homePathFor(user.role) : '/login'} replace />
+}
 
 function App() {
   return (
@@ -14,6 +22,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+
+        {/* Driver pages */}
         <Route
           path="/find-parking"
           element={
@@ -30,14 +40,18 @@ function App() {
             </RequireAuth>
           }
         />
+
+        {/* Attendant / admin page */}
         <Route
-          path="*"
+          path="/desk"
           element={
-            <RequireAuth>
-              <WelcomePage />
+            <RequireAuth roles={['attendant', 'admin']}>
+              <ParkingDeskPage />
             </RequireAuth>
           }
         />
+
+        <Route path="*" element={<HomeRedirect />} />
       </Routes>
     </>
   )
