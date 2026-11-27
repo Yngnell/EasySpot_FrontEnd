@@ -435,3 +435,55 @@ button.small {
   background: #eceef2;
   color: #4b5563;
 }
+
+/* Link that looks like a primary button */
+.button-link {
+  display: inline-block;
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.button-link:hover {
+  background: var(--primary-dark);
+}
+
+/* Tables */
+.table-wrap {
+  padding: 0;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.7rem 1rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+th {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: #f8f9fc;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.edit-form {
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
